@@ -1,68 +1,189 @@
 <!DOCTYPE html>
-<html lang="sr">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Mladen – Hardware inženjer</title>
+<title>Mladen – Hardware Engineer</title>
 <style>
-:root{--bg:#f6f7f9;--fg:#14181f;--mut:#5b6573;--card:#fff;--line:#dde1e7;--acc:#0a7d5a;
+/* Headings: Altium Designer Stroke. Body and small text: Liberation Mono. */
+@font-face{font-family:"Altium";src:url("AltiumDesignerStroke-Bold700.ttf") format("truetype");font-weight:700;font-display:swap}
+@font-face{font-family:"LibMono";src:url("LiberationMono-Regular.ttf") format("truetype");font-weight:400;font-display:swap}
+@font-face{font-family:"LibMono";src:url("LiberationMono-Bold.ttf") format("truetype");font-weight:700;font-display:swap}
+:root{--bg:#0c0f12;--bg2:#12161b;--fg:#eef1f4;--mut:#8b95a1;--line:#222a33;--acc:#4ade9c;--accfg:#06130d;
+--h:"Altium","LibMono",ui-monospace,Menlo,Consolas,monospace;--f:"LibMono",ui-monospace,Menlo,Consolas,monospace;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1318;--fg:#e8ebef;--mut:#9aa4b2;--card:#171d25;--line:#283039;--acc:#3ddc9c}}
-:root[data-theme="dark"]{--bg:#0f1318;--fg:#e8ebef;--mut:#9aa4b2;--card:#171d25;--line:#283039;--acc:#3ddc9c}
+:root[data-theme="light"]{--bg:#f4f5f2;--bg2:#fff;--fg:#101418;--mut:#5d6670;--line:#d9dcd6;--acc:#0b7a52;--accfg:#fff}
 *{box-sizing:border-box}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-main{max-width:860px;margin:0 auto;padding:40px 20px 64px}
-h1{font-size:2rem;margin:0 0 4px}
-h2{font-size:1.15rem;margin:40px 0 14px;padding-bottom:6px;border-bottom:1px solid var(--line)}
-.sub{color:var(--acc);font-weight:600;margin:0 0 14px}
-p{margin:0 0 12px}
-.tags{display:flex;flex-wrap:wrap;gap:8px;padding:0;list-style:none;margin:0}
-.tags li{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:3px 12px;font-size:.88rem}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:16px}
-.card h3{margin:0 0 4px;font-size:1.1rem}
-.meta{color:var(--mut);font-size:.88rem;margin-bottom:10px}
-.ph{height:160px;border:2px dashed var(--line);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--mut);font-size:.9rem;margin-bottom:12px;text-align:center;padding:8px}
-dl{margin:0}dt{font-weight:600;margin-top:8px}dd{margin:0;color:var(--mut)}
-a{color:var(--acc)}
-footer{color:var(--mut);font-size:.85rem;margin-top:40px}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 15px/1.7 var(--f);font-synthesis:none;position:relative;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.bgimg{position:absolute;top:0;left:0;right:0;height:clamp(440px,78vh,780px);background:url("hero.webp") center/cover no-repeat;-webkit-mask-image:linear-gradient(#000 30%,transparent 100%);mask-image:linear-gradient(#000 30%,transparent 100%);z-index:-1;pointer-events:none;will-change:opacity,transform}
+.bgimg::after{content:"";position:absolute;inset:0;background:linear-gradient(color-mix(in srgb,var(--bg) 78%,transparent),color-mix(in srgb,var(--bg) 45%,transparent))}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+nav{display:flex;justify-content:flex-end;align-items:center;padding:22px 0;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase}
+nav a{color:var(--mut);text-decoration:none;margin-left:22px}nav a:hover{color:var(--acc)}
+nav .l{display:flex;align-items:center}
+#t{background:none;border:1px solid var(--line);color:var(--mut);font:inherit;letter-spacing:inherit;text-transform:inherit;padding:4px 10px;border-radius:4px;cursor:pointer;margin-left:22px}
+#t:hover{color:var(--acc);border-color:var(--acc)}
+.hero{padding:88px 0 72px;border-bottom:1px solid var(--line)}
+.eyebrow{color:var(--acc);font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;margin:0 0 18px}
+h1{font-family:var(--h);font-size:clamp(3.2rem,12vw,7.5rem);line-height:1;letter-spacing:.02em;margin:0 0 26px;font-weight:700}
+.lead{max-width:640px;color:var(--mut);font-size:1rem;margin:0 0 30px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0;list-style:none}
+.chips li{font-size:.8rem;letter-spacing:.05em;border:1px solid var(--line);padding:4px 11px;border-radius:3px;color:var(--mut)}
+section{padding:72px 0;border-bottom:1px solid var(--line)}
+h2{font-family:var(--h);font-size:1.2rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin:0 0 36px;font-weight:700}
+.proj{display:grid;grid-template-columns:1.25fr 1fr;gap:40px;margin-bottom:72px;align-items:start}
+.proj:nth-child(even) .gal{order:2}
+.gal{position:relative;aspect-ratio:4/3;background:var(--bg2);border:1px solid var(--line);border-radius:6px;overflow:hidden;outline-offset:3px;min-width:0}
+.track{display:flex;height:100%;transition:transform .35s ease}
+.slide{flex:0 0 100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--mut);font-size:.85rem;text-align:center;padding:12px}
+.slide img{width:100%;height:100%;object-fit:contain;display:block}.slide.cover img{object-fit:cover}
+.nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:color-mix(in srgb,var(--bg) 75%,transparent);color:var(--fg);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}
+.nav:hover{background:var(--acc);color:var(--accfg);border-color:var(--acc)}
+.nav svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.prev{left:12px}.next{right:12px}
+.count{position:absolute;right:12px;bottom:10px;font-size:.78rem;letter-spacing:.08em;background:color-mix(in srgb,var(--bg) 75%,transparent);padding:2px 9px;border-radius:3px}
+.dots{position:absolute;left:12px;bottom:14px;display:flex;gap:6px}.dots i{width:7px;height:7px;border-radius:50%;background:var(--line);border:1px solid var(--mut)}.dots i.on{background:var(--acc);border-color:var(--acc)}
+.gal.single .nav,.gal.single .count,.gal.single .dots{display:none}
+.num{font-family:var(--h);color:var(--acc);font-size:1.1rem;letter-spacing:.1em}
+h3{font-family:var(--h);font-size:2.1rem;line-height:1.1;letter-spacing:.02em;margin:6px 0 10px;font-weight:700}
+.proj p{color:var(--mut);margin:0 0 14px}
+.spec{font-size:.82rem;letter-spacing:.03em;border-top:1px solid var(--line);padding-top:12px;display:grid;grid-template-columns:auto 1fr;gap:4px 16px;color:var(--mut)}
+.spec b{color:var(--fg);font-weight:700}
+.contact a{font-family:var(--h);color:var(--fg);font-size:clamp(1.3rem,4.5vw,2.4rem);text-decoration:none;border-bottom:2px solid var(--acc);word-break:break-all}
+.contact a:hover{color:var(--acc)}
+.links{margin-top:22px;font-size:.9rem;letter-spacing:.06em;text-transform:uppercase}.links a{color:var(--mut);margin-right:22px;text-decoration:none}.links a:hover{color:var(--acc)}
+footer{padding:28px 0 40px;font-size:.78rem;letter-spacing:.06em;color:var(--mut)}
+@media(max-width:760px){.proj{grid-template-columns:1fr;gap:20px;margin-bottom:56px}.proj:nth-child(even) .gal{order:0}.hero{padding:56px 0 48px}section{padding:52px 0}nav a{margin-left:14px}}
 </style>
 </head>
 <body>
-<main>
+<div class="bgimg" aria-hidden="true"></div>
+<div class="wrap">
+<nav><div class="l"><a href="#projects">Projects</a><a href="#contact">Contact</a><button id="t" type="button" aria-label="Toggle theme">Theme</button></div></nav>
+
+<header class="hero">
+<p class="eyebrow">Hardware Engineer</p>
 <h1>Mladen</h1>
-<p class="sub">Hardware inženjer · PCB dizajn · Embedded elektronika</p>
-<p>Dizajniram štampane ploče i elektroniku od šeme do sastavljenog prototipa. Tražim [freelance projekte / stalni posao] u oblasti [motor drajveri, senzorske ploče, UART/USB interfejsi].</p>
-<ul class="tags"><li>Altium Designer</li><li>Fusion 360</li><li>Stepper drajveri</li><li>Senzori</li><li>UART / USB</li><li>Level shifting</li></ul>
+<p class="lead">I design printed circuit boards and embedded electronics, from schematic to an assembled and tested prototype.</p>
+<ul class="chips"><li>Altium Designer</li><li>Fusion 360</li><li>Stepper drivers</li><li>Sensors</li><li>UART / USB</li><li>Level shifting</li></ul>
+</header>
 
-<h2>Projekti</h2>
+<section id="projects">
+<h2>Selected Projects</h2>
 
-<article class="card">
-<h3>Naziv projekta 1</h3>
-<div class="meta">Moja uloga: šema, layout, testiranje · Alati: Altium</div>
-<div class="ph">Ovde ubaci render ploče ili fotografiju</div>
-<dl>
-<dt>Problem</dt><dd>Šta je trebalo rešiti i zašto.</dd>
-<dt>Ključne odluke</dt><dd>Zašto taj čip, topologija, stackup.</dd>
-<dt>Rezultat</dt><dd>Šta je radilo, mereni podaci, šta si naučio.</dd>
-</dl>
+<!--
+GALLERY: each project has a list of slides. Add an image like this:
+<div class="slide"><img src="projekat1-a.jpg" alt="Image description"></div>
+Each project currently has 7 image slots. Delete extras or add more (copy a whole div class="slide" line). Images are shown whole (so a layout is never cropped). To make a photo fill the whole frame, write class="slide cover". With only one image, the arrows hide themselves.
+-->
+
+<article class="proj">
+<div class="gal" tabindex="0" aria-label="Project 1 gallery">
+<div class="track">
+<div class="slide">Image 1 / board render</div>
+<div class="slide">Image 2 / photo of the assembled board</div>
+<div class="slide">Image 3 / layout, top layer</div>
+<div class="slide">Image 4 / layout, bottom layer</div>
+<div class="slide">Image 5 / 3D model</div>
+<div class="slide">Image 6 / test or oscilloscope capture</div>
+<div class="slide">Image 7</div>
+</div>
+<button class="nav prev" type="button" aria-label="Previous image"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+<button class="nav next" type="button" aria-label="Next image"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+<div class="count" aria-live="polite"></div>
+</div>
+<div>
+<span class="num">01</span>
+<h3>Project Name</h3>
+<p>Two or three sentences: what problem it solved and what your solution was.</p>
+<div class="spec"><span>Role</span><b>schematic, layout, testing</b><span>Tools</span><b>Altium Designer</b><span>Result</span><b>key figure</b></div>
+</div>
 </article>
 
-<article class="card">
-<h3>Naziv projekta 2</h3>
-<div class="meta">Moja uloga: ... · Alati: ...</div>
-<div class="ph">Ovde ubaci sliku</div>
-<dl>
-<dt>Problem</dt><dd>...</dd>
-<dt>Ključne odluke</dt><dd>...</dd>
-<dt>Rezultat</dt><dd>...</dd>
-</dl>
+<article class="proj">
+<div class="gal" tabindex="0" aria-label="Project 2 gallery">
+<div class="track">
+<div class="slide">Image 1</div>
+<div class="slide">Image 2</div>
+<div class="slide">Image 3</div>
+<div class="slide">Image 4</div>
+<div class="slide">Image 5</div>
+<div class="slide">Image 6</div>
+<div class="slide">Image 7</div>
+</div>
+<button class="nav prev" type="button" aria-label="Previous image"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+<button class="nav next" type="button" aria-label="Next image"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+<div class="count" aria-live="polite"></div>
+</div>
+<div>
+<span class="num">02</span>
+<h3>Project Name</h3>
+<p>Two or three sentences on the problem and the solution.</p>
+<div class="spec"><span>Role</span><b>...</b><span>Tools</span><b>...</b><span>Result</span><b>...</b></div>
+</div>
 </article>
 
-<h2>Kontakt</h2>
-<p>E-mail: <a href="mailto:tvoj@email.com">tvoj@email.com</a><br>
-LinkedIn: <a href="#">link</a> · GitHub: <a href="#">link</a></p>
+<article class="proj">
+<div class="gal" tabindex="0" aria-label="Project 3 gallery">
+<div class="track">
+<div class="slide">Image 1</div>
+<div class="slide">Image 2</div>
+<div class="slide">Image 3</div>
+<div class="slide">Image 4</div>
+<div class="slide">Image 5</div>
+<div class="slide">Image 6</div>
+<div class="slide">Image 7</div>
+</div>
+<button class="nav prev" type="button" aria-label="Previous image"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+<button class="nav next" type="button" aria-label="Next image"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+<div class="count" aria-live="polite"></div>
+</div>
+<div>
+<span class="num">03</span>
+<h3>Project Name</h3>
+<p>Two or three sentences on the problem and the solution.</p>
+<div class="spec"><span>Role</span><b>...</b><span>Tools</span><b>...</b><span>Result</span><b>...</b></div>
+</div>
+</article>
+</section>
+
+<section id="contact" class="contact" style="border-bottom:0">
+<h2>Contact</h2>
+<a href="mailto:tvoj@email.com">tvoj@email.com</a>
+<div class="links"><a href="#">LinkedIn</a><a href="#">GitHub</a></div>
+</section>
 <footer>© 2026 Mladen</footer>
-</main>
+</div>
+<script>
+(function(){
+var r=document.documentElement,k="theme";
+try{var s=localStorage.getItem(k);if(s)r.setAttribute("data-theme",s)}catch(e){}
+document.getElementById("t").addEventListener("click",function(){
+var n=r.getAttribute("data-theme")==="dark"?"light":"dark";r.setAttribute("data-theme",n);
+try{localStorage.setItem(k,n)}catch(e){}});
+
+var bg=document.querySelector(".bgimg"),rm=window.matchMedia("(prefers-reduced-motion: reduce)").matches,tick=false;
+function upd(){tick=false;var y=window.scrollY||0,p=Math.min(1,y/(bg.offsetHeight*0.7));bg.style.opacity=1-p;if(!rm)bg.style.transform="translateY("+(y*0.35)+"px)"}
+window.addEventListener("scroll",function(){if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});upd();
+
+function pad(n){return n<10?"0"+n:""+n}
+document.querySelectorAll(".gal").forEach(function(g){
+var track=g.querySelector(".track"),n=track.children.length,i=0,c=g.querySelector(".count");
+if(n<2)g.classList.add("single");
+var dots=document.createElement("div");dots.className="dots";
+for(var j=0;j<n;j++)dots.appendChild(document.createElement("i"));g.appendChild(dots);
+function go(x){i=(x+n)%n;track.style.transform="translateX(-"+(i*100)+"%)";c.textContent=pad(i+1)+" / "+pad(n);
+for(var j=0;j<n;j++)dots.children[j].className=j===i?"on":""}
+g.querySelector(".prev").addEventListener("click",function(){go(i-1)});
+g.querySelector(".next").addEventListener("click",function(){go(i+1)});
+g.addEventListener("keydown",function(e){if(e.key==="ArrowLeft")go(i-1);if(e.key==="ArrowRight")go(i+1)});
+var x0=null;
+g.addEventListener("touchstart",function(e){x0=e.touches[0].clientX},{passive:true});
+g.addEventListener("touchend",function(e){if(x0===null)return;var d=e.changedTouches[0].clientX-x0;if(Math.abs(d)>40)go(d<0?i+1:i-1);x0=null});
+go(0);
+});
+})();
+</script>
 </body>
 </html>
