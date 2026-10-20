@@ -27,11 +27,12 @@ nav .l{display:flex;align-items:center}
 #t{background:none;border:1px solid var(--line);color:var(--mut);font:inherit;letter-spacing:inherit;text-transform:inherit;padding:4px 10px;border-radius:4px;cursor:pointer;margin-left:22px}
 #t:hover{color:var(--acc);border-color:var(--acc)}
 .hero{padding:88px 0 72px;border-bottom:1px solid var(--line)}
-.eyebrow{color:var(--acc);font-size:1rem;letter-spacing:.12em;text-transform:uppercase;margin:0 0 18px}
+.eyebrow{font-family:var(--h);font-weight:700;color:var(--acc);font-size:1.2rem;letter-spacing:.14em;text-transform:uppercase;margin:0 0 18px}
 h1{font-family:var(--h);font-size:clamp(3.2rem,12vw,7.5rem);line-height:1;letter-spacing:.02em;margin:0 0 26px;font-weight:700}
 .lead{max-width:680px;color:var(--mut);font-size:1.2rem;margin:0 0 30px}
 .chips{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0;list-style:none}
-.chips li{font-size:.8rem;letter-spacing:.05em;border:1px solid var(--line);padding:4px 11px;border-radius:3px;color:var(--mut)}
+.chips li{font-size:.9rem;letter-spacing:.04em;border:0;padding:7px 15px;border-radius:12px;color:var(--fg);background:color-mix(in srgb,var(--fg) 11%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.skills-h{margin:0 0 14px}
 section{padding:72px 0;border-bottom:1px solid var(--line)}
 h2{font-family:var(--h);font-size:1.2rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin:0 0 36px;font-weight:700}
 .proj{display:grid;grid-template-columns:1.25fr 1fr;gap:40px;margin-bottom:72px;align-items:start}
@@ -78,7 +79,8 @@ footer{padding:28px 0 40px;font-size:.78rem;letter-spacing:.06em;color:var(--mut
 <p class="eyebrow">Hardware Engineer</p>
 <h1>Mladen</h1>
 <p class="lead">I design printed circuit boards and embedded electronics, from schematic to an assembled and tested prototype.</p>
-<ul class="chips"><li>Altium Designer</li><li>Fusion 360</li><li>Stepper drivers</li><li>Sensors</li><li>UART / USB</li><li>Level shifting</li></ul>
+<h2 class="skills-h">Skills</h2>
+<ul class="chips"><li>Altium Designer</li><li>KiCad</li><li>LTSpice</li><li>Fusion 360</li><li>Autodesk Inventor</li><li>Soldering</li></ul>
 </header>
 
 <section id="projects">
@@ -156,7 +158,7 @@ Each project currently has 7 image slots. Delete extras or add more (copy a whol
 </div>
 </article>
 <article class="proj">
-<div class="gal" tabindex="0" aria-label="Project 4 gallery">
+<div class="gal" tabindex="0" aria-label="LBB - Microphone Board gallery">
 <div class="track">
 <div class="slide">Image 1</div>
 <div class="slide">Image 2</div>
@@ -172,7 +174,7 @@ Each project currently has 7 image slots. Delete extras or add more (copy a whol
 </div>
 <div>
 <span class="num">04</span>
-<h3>Project Name</h3>
+<h3>LBB - Microphone Board</h3>
 <p>Two or three sentences on the problem and the solution.</p>
 <div class="spec"><span>Role</span><b>...</b><span>Tools</span><b>...</b><span>Result</span><b>...</b></div>
 </div>
