@@ -35,7 +35,7 @@ h1{font-family:var(--h);font-size:clamp(3.2rem,12vw,7.5rem);line-height:1;letter
 .skills-h{margin:0 0 14px}
 section{padding:72px 0;border-bottom:1px solid var(--line)}
 h2{font-family:var(--h);font-size:1.2rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin:0 0 36px;font-weight:700}
-.proj{display:grid;grid-template-columns:1.25fr 1fr;gap:40px;margin-bottom:72px;align-items:start}
+.proj{display:grid;grid-template-columns:1.25fr 1.25fr;gap:40px;margin-bottom:72px;align-items:start}
 .proj:nth-child(even) .gal{order:2}
 .gal{position:relative;aspect-ratio:4/3;background:var(--bg2);border:1px solid var(--line);border-radius:6px;overflow:hidden;outline-offset:3px;min-width:0}
 .track{display:flex;height:100%;transition:transform .35s ease}
@@ -108,8 +108,8 @@ Each project currently has 7 image slots. Delete extras or add more (copy a whol
 <div>
 <span class="num">01</span>
 <h3>MoveTech</h3>
-<p>Two or three sentences: what problem it solved and what your solution was.</p>
-<div class="spec"><span>Role</span><b>schematic, layout, testing</b><span>Tools</span><b>Altium Designer</b><span>Result</span><b>key figure</b></div>
+<p>MoveTech is a custom stepper motor driver board built for NEMA 23 motors running at 2.8A per phase. Driven by an ESP32 for Wi-Fi and Bluetooth, it features two driver setups (one integrated, one with external MOSFETs), differential line receivers for encoder feedback, hall sensors for current measurement, and an onboard IMU for motion sensing. To keep the board reliable under heavy load, the layout includes multi-layer power planes and exposed thermal vias for heatsink mounting, alongside controlled impedance routing for the RF traces and differential pairs.</p>
+<div class="spec"><span>Role</span><b>Schematic, Layout, BOM, Testing</b><span>Tools</span><b>Altium Designer, Saturn PCB Toolkit, Home lab</b>Focus</span><b>Thermal management, RF design, Differential signaling</b></div>
 </div>
 </article>
 
@@ -131,8 +131,8 @@ Each project currently has 7 image slots. Delete extras or add more (copy a whol
 <div>
 <span class="num">02</span>
 <h3>BattMon - PDU board</h3>
-<p>Two or three sentences on the problem and the solution.</p>
-<div class="spec"><span>Role</span><b>...</b><span>Tools</span><b>...</b><span>Result</span><b>...</b></div>
+<p>BattMon Power Distribution Unit (PDU) is a specialized power management board built for a modular battery system. It divides power distribution into two distinct domains: a High Voltage (HV) side operating around 600V and a Low Voltage (LV) side at 24V. The HV section features DC-DC converters, current sensing, and filtering, while the LV section includes a deep discharge protection circuit with an onboard contactors. A primary design requirement was maintaining strict electrical clearance and creepage distances to guarantee safe isolation between the high-voltage and low-voltage sections.</p>
+<div class="spec"><span>Role</span><b>Schematic, Layout, BOM, Testing</b><span>Tools</span><b>KiCad, Saturn PCB Toolkit, Lab equipment</b><span>Focus</span><b>Thermal management, Clearance and Creepage, Analog sensing</b></div>
 </div>
 </article>
 
@@ -154,8 +154,8 @@ Each project currently has 7 image slots. Delete extras or add more (copy a whol
 <div>
 <span class="num">03</span>
 <h3>ProgrammerBox</h3>
-<p>Two or three sentences on the problem and the solution.</p>
-<div class="spec"><span>Role</span><b>...</b><span>Tools</span><b>...</b><span>Result</span><b>...</b></div>
+<p>ProgrammerBox is a USB-to-serial programming interface designed for flashing and debugging custom embedded boards over USB-C. Built around a dedicated USB-to-UART bridge, the hardware incorporates both an auto-reset circuit (driven by standard DTR/RTS line toggling) and physical Boot/Reset buttons for manual mode control. The board features multiple connector headers to support various pinouts and is housed in a custom 3D-printed enclosure with a laser-cut acrylic lid.</p>
+<div class="spec"><span>Role</span><b>Schematic, Layout, BOM, Testing</b><span>Tools</span><b>Altium Designer, Saturn PCB Toolkit, Fusion 360, Home lab</b><span>Focus</span><b>USB routing, Auto-Reset circuitry, Industry standard connections</b></div>
 </div>
 </article>
 <article class="proj">
@@ -176,8 +176,8 @@ Each project currently has 7 image slots. Delete extras or add more (copy a whol
 <div>
 <span class="num">04</span>
 <h3>LBB - Microphone Board</h3>
-<p>Two or three sentences on the problem and the solution.</p>
-<div class="spec"><span>Role</span><b>...</b><span>Tools</span><b>...</b><span>Result</span><b>...</b></div>
+<p>The Microphone Board is a hardware platform built to demonstrate and evaluate different microphone technologies on a single PCB. Designed to simplify microphone selection for MCU development boards, it features 5 independent channels, three PDM microphones, one I2S microphone, and one analog microphone. The board supports multiple power inputs, including USB-C, benchtop supplies, and power profiler kits (such as a Nordic PPK2), and offers physical switches and jumpers to enable individual channels and swap left/right stereo routing.</p>
+<div class="spec"><span>Role</span><b>Schematic, Layout, BOM, Testing</b><span>Tools</span><b>Altium Designer, Saturn PCB Toolkit, Home lab</b><span>Focus</span><b>Sensitive analog signals, Signal voltage levels, Industry standard pinouts, Channel switching logic </b></div>
 </div>
 </article>
 
@@ -198,8 +198,8 @@ Each project currently has 7 image slots. Delete extras or add more (copy a whol
 <div>
 <span class="num">05</span>
 <h3>Flight Controller</h3>
-<p>Two or three sentences on the problem and the solution.</p>
-<div class="spec"><span>Role</span><b>...</b><span>Tools</span><b>...</b><span>Result</span><b>...</b></div>
+<p>STM32F405 Flight Controller is a custom hardware design project built to explore end-to-end embedded development. Powered by an STM32F405 microcontroller and an LSM6DSV16XTR IMU, carefully centered on the PCB to optimize tracking accuracy, the board includes four motor outputs for external ESCs, an SWD programming port, and a UART interface for RF telemetry. Created entirely as a self-directed hobby project, it is supposed to run on BetaFlight open source software so the design is fully open source as well.</p>
+<div class="spec"><span>Role</span><b>Requirements, Schematic, Layout, BOM, Testing</b><span>Tools</span><b>Altium Designer, Saturn PCB Toolkit, Home lab </b><span>Focus</span><b>Oscillator layout, MCU implementation</b></div>
 </div>
 </article>
 </section>
